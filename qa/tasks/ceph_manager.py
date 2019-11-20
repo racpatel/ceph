@@ -37,6 +37,7 @@ def write_conf(ctx, conf_path=DEFAULT_CONF_PATH, cluster='ceph'):
     conf_fp = StringIO()
     ctx.ceph[cluster].conf.write(conf_fp)
     conf_fp.seek(0)
+    log.info('I am here')
     writes = ctx.cluster.run(
         args=[
             'sudo', 'mkdir', '-p', '/etc/ceph', run.Raw('&&'),
