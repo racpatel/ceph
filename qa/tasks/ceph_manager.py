@@ -44,7 +44,7 @@ def write_conf(ctx, conf_path=DEFAULT_CONF_PATH, cluster='ceph'):
             'sudo', 'chmod', '0755', '/etc/ceph', run.Raw('&&'),
             #'sudo', 'sh', '-c', run.Raw('"'),'cat', run.Raw('>'), conf_path,run.Raw('"'),
             #"sudo", "cat > %s" % conf_path,
-            "sudo", "dd of=%s" % conf_path,
+            'sudo', 'dd of='conf_path, 
             run.Raw('&&'),
             'sudo', 'chmod', '0644', conf_path,
         ],
