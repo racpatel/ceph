@@ -37,7 +37,8 @@ def write_conf(ctx, conf_path=DEFAULT_CONF_PATH, cluster='ceph'):
     conf_fp = StringIO()
     ctx.ceph[cluster].conf.write(conf_fp)
     conf_fp.seek(0)
-    log.info('I am here')
+    log.info('I am there')
+    t1='dd of='+ conf_path
     writes = ctx.cluster.run(
         args=[
             'sudo', 'mkdir', '-p', '/etc/ceph', run.Raw('&&'),
@@ -50,7 +51,7 @@ def write_conf(ctx, conf_path=DEFAULT_CONF_PATH, cluster='ceph'):
 #            "sudo dd of=%s" %conf_path, -  'sudo dd of=/etc/ceph/ceph.conf'
             #'sudo', 'dd of=' conf_path, - syntax error
             #'sudo', 'dd of=%s' % conf_path, - sudo 'dd of='
-            'sudo', 'dd of=' + conf_path,
+            'sudo', t1,
             run.Raw('&&'),
             'sudo', 'chmod', '0644', conf_path,
         ],
@@ -60,7 +61,7 @@ def write_conf(ctx, conf_path=DEFAULT_CONF_PATH, cluster='ceph'):
     run.wait(writes)
 
 
-def mount_osd_data(ctx, remote, cluster, osd):
+det > %s" % conf_path,"sudo dd of=%s" %conf_path,f mount_osd_data(ctx, remote, cluster, osd):
     """
     Mount a remote OSD
 
