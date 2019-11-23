@@ -61,7 +61,7 @@ def write_conf(ctx, conf_path=DEFAULT_CONF_PATH, cluster='ceph'):
     run.wait(writes)
 
 
-det > %s" % conf_path,"sudo dd of=%s" %conf_path,f mount_osd_data(ctx, remote, cluster, osd):
+def mount_osd_data(ctx, remote, cluster, osd):
     """
     Mount a remote OSD
 
