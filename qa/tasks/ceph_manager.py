@@ -55,7 +55,7 @@ def write_conf(ctx, conf_path=DEFAULT_CONF_PATH, cluster='ceph'):
             'sudo', 'dd',  t1,
             run.Raw('&&'),
             'sudo', 'dd', t2,
-            run.raw('&&'),
+            run.Raw('&&'),
             'sudo', 'chmod', '0644', conf_path,
         ],
         stdin=run.PIPE,
