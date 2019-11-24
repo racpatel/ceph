@@ -38,7 +38,7 @@ def write_conf(ctx, conf_path=DEFAULT_CONF_PATH, cluster='ceph'):
     ctx.ceph[cluster].conf.write(conf_fp)
     conf_fp.seek(0)
     log.info('I am there t1')
-  #  t2 = 'of='+ conf_path
+    t2 = 'of='+ conf_path
     t1 = 'of=/etc/cep/ceph.conf'
     writes = ctx.cluster.run(
         args=[
@@ -54,7 +54,8 @@ def write_conf(ctx, conf_path=DEFAULT_CONF_PATH, cluster='ceph'):
             #'sudo', 'dd of=%s' % conf_path, - sudo 'dd of='
             'sudo', 'dd',  t1,
             run.Raw('&&'),
-#            'sudo', 'dd', t1
+            'sudo', 'dd', t2,
+            run.raw('&&'),
             'sudo', 'chmod', '0644', conf_path,
         ],
         stdin=run.PIPE,
